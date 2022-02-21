@@ -1,5 +1,5 @@
-let distanza=100;
-let eta= 70
+let distanza;
+let eta;
 let prezzo = 0.21;
 let sconto_1 = 0.2;
 let sconto_2 = 0.4;
@@ -24,6 +24,7 @@ if (eta < 18) {
 
 importo = importo.toFixed(2).toString();
 importo = importo.replace(".",",");
+
 
 // output
 output.innerHTML = "<strong>" + importo + "</strong>";
