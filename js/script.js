@@ -1,34 +1,41 @@
-let distanza;
-let eta;
-let prezzo = 0.21;
-let sconto_1 = 0.2;
-let sconto_2 = 0.4;
-let importo;
+let distanzaKm;
+let etaAnni;
+let prezzoUnitario = 0.21;
+let moltiplicatoreScontoMinorenni = 0.8;
+let moltiplicatoreScontoSenior = 0.6;
+let importoFinale;
 let output = document.getElementById("importoOutput");
 
 
+
 // prompt
-distanza = prompt("Quanti chilometri vuoi percorrere?", "Inserisci un numero");
-eta = prompt("Quanti anni hai?", "Inserisci un numero");
+distanzaKm = prompt("Quanti chilometri vuoi percorrere?", "Inserisci un numero");
+etaAnni = prompt("Quanti anni hai?", "Inserisci un numero");
+
 
 
 // condizioni
-if (!isNaN(distanza) && !isNaN(eta)) {
-    if (eta < 18) {
-        importo = Math.round(((((prezzo * distanza) - (prezzo * distanza * sconto_1))) + Number.EPSILON) * 100) / 100;
-    } else if (eta > 65) {
-        importo = Math.round(((((prezzo * distanza) - (prezzo * distanza * sconto_2))) + Number.EPSILON) * 100) / 100;
-    } else {
-        importo = Math.round((((prezzo * distanza)) + Number.EPSILON) * 100) / 100;
-    }
-} else {
+if (isNaN(distanzaKm) || isNaN(etaAnni)){
     alert("Per favore inserisci solo caratteri numerici. La pagina verrà ricaricata.");
     location.reload();
 }
 
-importo = importo.toFixed(2).toString();
-importo = importo.replace(".", ",");
+
+if (etaAnni < 18) {
+    importoFinale = prezzoUnitario * distanzaKm * moltiplicatoreScontoMinorenni;
+} else if (etaAnni > 65) {
+    importoFinale = prezzoUnitario * distanzaKm * moltiplicatoreScontoSenior;
+} else {
+    importoFinale = prezzoUnitario * distanzaKm;
+}
+
+
+    
+// arrotondamento
+importoFinale = Math.round((importoFinale + Number.EPSILON) * 100) / 100;
+importoFinale = importoFinale.toFixed(2).replace(".", ",");
+
 
 
 // output
-output.innerHTML = "<strong>€ " + importo + "</strong>";
+output.innerHTML = "<strong>€ " + importoFinale + "</strong>";
