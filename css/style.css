@@ -32,11 +32,6 @@
     box-shadow: inset 0 2px 8px 0 #00000080;
 }
 
-#importoOutput::before {
-    content: "€ ";
-    font-weight: 700;
-}
-
 img {
     display: block;
     margin: 0 auto;

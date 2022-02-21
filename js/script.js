@@ -13,17 +13,22 @@ eta = prompt("Quanti anni hai?", "Inserisci un numero");
 
 
 // condizioni
-if (eta < 18) {
-    importo = Math.round(((((prezzo * distanza) - (prezzo * distanza * sconto_1))) + Number.EPSILON) * 100) / 100;
-} else if (eta > 65) {
-    importo = Math.round(((((prezzo * distanza) - (prezzo * distanza * sconto_2))) + Number.EPSILON) * 100) / 100;
+if (!isNaN(distanza) && !isNaN(eta)) {
+    if (eta < 18) {
+        importo = Math.round(((((prezzo * distanza) - (prezzo * distanza * sconto_1))) + Number.EPSILON) * 100) / 100;
+    } else if (eta > 65) {
+        importo = Math.round(((((prezzo * distanza) - (prezzo * distanza * sconto_2))) + Number.EPSILON) * 100) / 100;
+    } else {
+        importo = Math.round((((prezzo * distanza)) + Number.EPSILON) * 100) / 100;
+    }
 } else {
-    importo = Math.round((((prezzo * distanza)) + Number.EPSILON) * 100) / 100;
+    alert("Per favore inserisci solo caratteri numerici. La pagina verrà ricaricata.");
+    location.reload()
 }
 
 importo = importo.toFixed(2).toString();
-importo = importo.replace(".",",");
+importo = importo.replace(".", ",");
 
 
 // output
-output.innerHTML = "<strong>" + importo + "</strong>";
+output.innerHTML = "<strong>€ " + importo + "</strong>";
