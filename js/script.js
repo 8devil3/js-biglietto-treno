@@ -15,7 +15,6 @@ eta = prompt("Quanti anni hai?", "Inserisci un numero");
 // condizioni
 if (eta < 18) {
     importo = Math.round(((((prezzo * distanza) - (prezzo * distanza * sconto_1))) + Number.EPSILON) * 100) / 100;
-    
 } else if (eta > 65) {
     importo = Math.round(((((prezzo * distanza) - (prezzo * distanza * sconto_2))) + Number.EPSILON) * 100) / 100;
 } else {
