@@ -23,7 +23,7 @@ if (!isNaN(distanza) && !isNaN(eta)) {
     }
 } else {
     alert("Per favore inserisci solo caratteri numerici. La pagina verrà ricaricata.");
-    location.reload()
+    location.reload();
 }
 
 importo = importo.toFixed(2).toString();
